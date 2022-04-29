@@ -4,7 +4,19 @@ class Post
     @text = nil
   end
 
+  def self.post_types
+    [Memo, Link, Task]
+  end
+
+  def self.create(type_index)
+    return post_types[type_index].new
+  end
+
   def read_from_console
+
+  end
+
+  def to_strings
 
   end
 
@@ -18,7 +30,7 @@ class Post
     file.close
   end
 
-  def file_name 
+  def file_path
     current_path = File.dirname(__FILE__)
 
     file_name = @created_at.strftime("#{self.class.name}_%Y-%m-%d_%H-%M-%S.txt")
